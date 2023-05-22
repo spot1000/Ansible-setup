@@ -1,0 +1,46 @@
+---
+# tasks file for all programs and packages
+
+- name: show distro versions
+  debug: msg="{{ item }}"
+  with_items:
+  - "{{ ansible_user_id }}"
+  - "{{ ansible_distribution }}"
+  - "{{ ansible_distribution_version }}"
+  - "{{ ansible_facts['os_family'] }}"
+
+- name: update and upgrade apt packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: true
+
+# install apt packages
+- import_tasks: programs/apt.yml
+
+# install system setup tasks
+- import_tasks: system-setup/zsh.yml 
+
+# install flatpak and snap managers
+- import_tasks: package-managers/flatpack.yml
+# - import_tasks: package-managers/snap.yml # not working properly for some reason
+
+# install programs not available via package managers
+- import_tasks: programs/vscode.yml
+- import_tasks: programs/spotify.yml
+# - import_tasks: programs/1pass.yml # not working properly for some reason
+- import_tasks: programs/alacritty-terminal.yml
+- import_tasks: programs/virtualbox.yml
+
+
+
+# things left to install:
+# - 1password
+# - discord
+# - slack
+# - zoom
+# - vagrant
+# - steam
+# - nodejs/nvm
+# - pyenv
+
+

@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ubuntu:22.04
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      instance:
+        ansible_user: root
+        user_name: adam
+  env:
+    ANSIBLE_HOME_DIR: /root
+verifier:
+  name: ansible

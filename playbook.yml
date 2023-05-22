@@ -1,0 +1,93 @@
+# Ansible playground Script
+
+
+- name: "Bootstrap development environment"
+  hosts: localhost
+  connection: local
+  become: true
+  pre_tasks:
+    - name: get user name
+      become: false
+      set_fact:
+        user_name: "{{ lookup('env', 'USER') }}"
+    - name: Update package cache (debian)
+      tags: always
+      apt: update_cache=yes
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Show distro versions
+      debug: msg="{{ item }}"
+      with_items:
+        - "{{ ansible_distribution }}"
+        - "{{ ansible_distribution_version }}"
+        - "{{ ansible_facts['os_family'] }}"
+
+    - name: Show propmt info
+      debug: msg="{{ item }}"
+      with_items:
+        - "{{ git_name }}"
+        - "{{ git_email }}"
+        - "{{ github_access_name }}"
+        - "{{ github_access_token }}"
+  # add pre task for mac systems
+
+
+  vars:
+    - test_repo: 'git@github.com:spot1000/diceroller.git'
+
+
+  vars_prompt:
+    - name: git_name
+      prompt: Git Name
+      private: false
+
+    - name: git_email
+      prompt: Git Email
+      private: false
+
+    - name: github_access_name
+      prompt: Github Access Name
+      private: false
+
+    - name: github_access_token
+      prompt: Github Access Token
+      private: true
+
+    - name: dev_type
+      prompt: Developer type (app, backend, firmware)
+      private: false
+
+
+
+  roles:
+    - role: software
+
+  # tasks:
+
+    # - name: install packages
+    #   apt: name={{ item }} state=latest
+    #   with_items:
+    #   - git
+    #   - vim
+    #   - curl
+    #   - wget
+    #   - python-pip
+    #   - python-dev
+    #   - build-essential
+    #   - libssl-dev
+    #   - libffi-dev
+    #   - libxml2-dev
+    #   - libxslt1-dev
+
+    # - name: check out git repo
+    #   git: 
+    #     repo: {{ test_repo }} 
+    #     dest: ~/projects/diceroller
+    #     accept_hostkey: yes
+    #     key_file: ~/.ssh/id_rsa
+    #     force: yes
+    #   delegate_to: localhost
+    #   run_once: yes
+    #   become: no
+
+

@@ -1,0 +1,19 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include playground.software"
+      include_role:
+        name: "playground.software"
+
+  pre_tasks:
+    - name: Create test users
+      become: yes
+      ansible.builtin.user:
+        name: '{{ item }}'
+        state: present
+        home: '/home/{{ item }}'
+        createhome: yes
+      with_items:
+        - adam
+        

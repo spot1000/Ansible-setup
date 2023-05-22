@@ -1,0 +1,8 @@
+# install VScode
+- src: gantsign.visual-studio-code
+
+# install VScode extentions
+- src: gantsign.visual-studio-code-extensions
+
+#install oh-my-zsh
+- src: gantsign.oh-my-zsh

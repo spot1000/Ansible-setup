@@ -1,0 +1,13 @@
+# set up flatpak support
+- name: system setup | package managers | add flatpak support
+  package:
+    name: flatpak
+    state: present
+
+- name: system setup | package managers | add flathub remote
+  tags: packages,flatpak
+  flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: user
+    state: present

@@ -1,0 +1,19 @@
+- name: software | vscode | add vscode key
+  ansible.builtin.include_role:
+    name: gantsign.visual-studio-code
+  vars:
+    users:
+      - username: "{{ user_name }}"
+        visual_studio_code_extensions:
+          - ms-python.python
+          - ms-vscode.cpptools
+          - espressif.esp-idf-extension
+          - eamodio.gitlens
+          - xaver.clang-format
+          - GitHub.copilot
+          - cschlosser.doxdocgen
+          - rust-lang.rust-analyzer
+          - platformio.platformio-ide
+          - geequlim.godot-tools
+
+          

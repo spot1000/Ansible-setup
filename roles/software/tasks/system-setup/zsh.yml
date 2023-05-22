@@ -1,0 +1,27 @@
+- name: system | oh-my-zsh | add oh-my-zsh
+  ansible.builtin.include_role:
+    name: gantsign.oh-my-zsh
+  vars:
+    users: 
+      - username: "{{ user_name }}"
+        oh_my_zsh:
+          plugins:
+            - git
+            - nvm
+            - pyenv
+            - aliases
+          install: true
+
+- name: system | oh-my-zsh | clone powerlevel10k
+  git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    depth: 1
+    dest: ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+- name: system | oh-my-zsh | update zsh file
+  ansible.builtin.lineinfile:
+    path: /home/{{ user_name }}/.zshrc
+    regexp: '^ZSH_THEME='
+    line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+    state: present
+    backup: yes

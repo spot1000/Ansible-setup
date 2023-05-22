@@ -1,0 +1,18 @@
+# install apt packages
+- name: install apt packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+  - git
+  - vim
+  - curl
+  - wget
+  - python-pip
+  - acl
+  - build-essential
+  - libssl-dev
+  - libffi-dev
+  - libxml2-dev
+  - libxslt1-dev
+  - ssh-askpass
