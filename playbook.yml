@@ -29,7 +29,18 @@
         - "{{ git_email }}"
         - "{{ github_access_name }}"
         - "{{ github_access_token }}"
-  # add pre task for mac systems
+    
+    - name: Set git user name
+      community.general.git_config:
+        scope: global
+        name: user.name
+        value: "{{ git_name }}"
+
+    - name: Set git user email
+      community.general.git_config:
+        scope: global
+        name: user.email
+        value: "{{ git_email }}"
 
 
   vars:
