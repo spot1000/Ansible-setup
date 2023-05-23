@@ -1,0 +1,6 @@
+- name: software | Slack | install slack
+  tags: packages,slack,snap
+  snap:
+    name: slack
+    state: present
+  when: ansible_distribution != "Archlinux"

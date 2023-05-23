@@ -47,3 +47,4 @@
   tags: virtualbox
   package:
     name: virtualbox-6.1
+  when: virtualbox_repo_debian is changed

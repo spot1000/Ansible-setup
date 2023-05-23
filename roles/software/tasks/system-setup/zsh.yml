@@ -25,3 +25,5 @@
     line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
     state: present
     backup: yes
+
+# still need to download the font

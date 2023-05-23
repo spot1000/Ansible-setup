@@ -4,15 +4,43 @@
     name: "{{ item }}"
     state: latest
   with_items:
+
+  # packages for esp-idf (ubuntu/debian)
   - git
-  - vim
-  - curl
   - wget
-  - python-pip
+  - flex
+  - bison
+  - gperf
+  - python3
+  - python3-pip
+  - python3-venv
+  - cmake
+  - ninja-build
+  - ccache
+  - libffi-dev
+  - libssl-dev
+  - dfu-util
+  - libusb-1.0-0
+
+  # other packages
   - acl
   - build-essential
-  - libssl-dev
-  - libffi-dev
+  - vim
+  - curl
   - libxml2-dev
   - libxslt1-dev
   - ssh-askpass
+
+# packages for esp-idf (arch linux)
+# - gcc 
+# - git 
+# - make 
+# - flex 
+# - bison 
+# - gperf 
+# - python 
+# - cmake 
+# - ninja 
+# - ccache 
+# - dfu-util 
+# - libusb 

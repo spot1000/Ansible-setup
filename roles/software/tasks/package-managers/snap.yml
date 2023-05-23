@@ -1,0 +1,14 @@
+# install snap
+- name: system setup | package managers | install snapd
+  package:
+    name: snapd
+    state: latest
+  when: ansible_distribution != "Archlinux"
+
+# Ensure core snap is installed
+# - name: system setup | package managers | install/update core snap
+#   tags: packages,snap,todoist,workstation-packages
+#   snap:
+#     name:  core
+#     state: present
+#   when: ansible_distribution != "Archlinux"
