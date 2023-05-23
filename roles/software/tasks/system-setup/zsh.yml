@@ -16,7 +16,7 @@
   git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     depth: 1
-    dest: ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    dest: $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
 - name: system | oh-my-zsh | update zsh file
   ansible.builtin.lineinfile:
@@ -27,3 +27,21 @@
     backup: yes
 
 # still need to download the font
+- name: Create fonts directory
+  become: true
+  file:
+    path: "{{ fonts_path }}"
+    mode: '0755'
+    state: directory
+
+- name: Copy powerlevel10k recommanded fonts
+  become: true
+  copy:
+    src: "fonts/{{ item }}"
+    dest: "/usr/share/fonts/{{ item }}"
+    mode: '0644'
+  loop:
+    - MesloLGS NF Bold Italic.ttf
+    - MesloLGS NF Bold.ttf
+    - MesloLGS NF Italic.ttf
+    - MesloLGS NF Regular.ttf
