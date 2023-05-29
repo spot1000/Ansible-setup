@@ -1,6 +1,6 @@
 # not working yet
 
-- name: software | 1pass | add 1pass key
+- name: Software | 1pass | add 1pass key
   ansible.builtin.get_url:
     url: https://downloads.1password.com/linux/keys/1password.asc
     dest: /usr/share/keyrings/1password-archive-keyring.asc
@@ -8,14 +8,14 @@
     force: true
 
 
-- name: software | 1pass | add 1pass repo
+- name: Software | 1pass | add 1pass repo
   tags: 1password,software
   apt_repository:
     repo: deb [arch=amd64 /usr/share/keyrings/1password-archive-keyring.asc] https://downloads.1password.com/linux/debian/amd64 stable main
     state: present
     update_cache: true
 
-- name: software | 1pass | install package
+- name: Software | 1pass | install package
   tags: 1password,software
   apt:
     name: 1password

@@ -1,12 +1,12 @@
 # set up flatpak support
-- name: system setup | package managers | add flatpak support
-  package:
+- name: System setup | package managers | add flatpak support
+  ansible.builtin.package:
     name: flatpak
     state: present
 
-- name: system setup | package managers | add flathub remote
+- name: System setup | package managers | add flathub remote
   tags: packages,flatpak
-  flatpak_remote:
+  ansible.builtin.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
     method: user

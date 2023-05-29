@@ -1,4 +1,4 @@
-- name: software | vscode | add vscode key
+- name: Software | vscode | add vscode key
   ansible.builtin.include_role:
     name: gantsign.visual-studio-code
   vars:
@@ -15,5 +15,3 @@
           - rust-lang.rust-analyzer
           - platformio.platformio-ide
           - geequlim.godot-tools
-
-          

@@ -6,30 +6,33 @@
   connection: local
   become: true
   pre_tasks:
-    - name: get user name
+    - name: Get user name
       become: false
-      set_fact:
+      ansible.builtin.set_fact:
         user_name: "{{ lookup('env', 'USER') }}"
     - name: Update package cache (debian)
       tags: always
-      apt: update_cache=yes
+      ansible.builtin.apt:
+        update_cache: true
       when: ansible_facts['os_family'] == 'Debian'
 
     - name: Show distro versions
-      debug: msg="{{ item }}"
+      ansible.builtin.debug:
+        msg: "{{ item }}"
       with_items:
         - "{{ ansible_distribution }}"
         - "{{ ansible_distribution_version }}"
         - "{{ ansible_facts['os_family'] }}"
 
     - name: Show propmt info
-      debug: msg="{{ item }}"
+      ansible.builtin.debug:
+        msg: "{{ item }}"
       with_items:
         - "{{ git_name }}"
         - "{{ git_email }}"
         - "{{ github_access_name }}"
         - "{{ github_access_token }}"
-    
+
     - name: Set git user name
       community.general.git_config:
         scope: global
@@ -68,6 +71,14 @@
       prompt: Developer type (app, backend, firmware)
       private: false
 
+  tasks:
+    - name: Set facts
+      ansible.builtin.set_fact:
+        dev_type: "{{ dev_type }}"
+        github_access_name: "{{ github_access_name }}"
+        github_access_token: "{{ github_access_token }}"
+        git_name: "{{ git_name }}"
+        git_email: "{{ git_email }}"
 
 
   roles:

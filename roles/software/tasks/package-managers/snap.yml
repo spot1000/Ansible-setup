@@ -1,6 +1,6 @@
 # install snap
-- name: system setup | package managers | install snapd
-  package:
+- name: System setup | package managers | install snapd
+  ansible.builtin.package:
     name: snapd
     state: latest
   when: ansible_distribution != "Archlinux"

@@ -1,7 +1,7 @@
 # add alacritty to apt repo
-- name: software | alacritty | add alacritty key
+- name: Software | alacritty | add alacritty key
   tags: alacritty,software
-  become: yes
+  become: true
   apt_repository:
     repo: ppa:aslatter/ppa
     state: present

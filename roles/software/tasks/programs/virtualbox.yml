@@ -1,3 +1,24 @@
+- name: Software | virtualbox | install apt key (debian)
+  ansible.builtin.get_url:
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    dest: /usr/share/keyrings/oracle-virtualbox-2016.asc
+    mode: 0644
+
+- name: Software | virtualbox | install repository (debian)
+  tags: virtualbox,repositories,virtualbox
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.asc] https://download.virtualbox.org/virtualbox/debian jammy contrib
+    state: present
+    filename: virtualbox
+  register: virtualbox_repo_debian
+
+- name: Software | virtualbox | install package
+  tags: virtualbox
+  ansible.builtin.package:
+    name: virtualbox-6.1
+  when: virtualbox_repo_debian is changed
+
+
 # - name: software | virtualbox | install apt key (debian)
 #   tags: virtualbox,repositories,virtualbox
 #   apt_key:
@@ -27,24 +48,3 @@
 #   # when:
 #   #   - virtualbox is defined
 #   #   - virtualbox == true
-
-
-
-- name: software | virtualbox | install apt key (debian)
-  ansible.builtin.get_url:
-    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-    dest: /usr/share/keyrings/oracle-virtualbox-2016.asc
-
-- name: software | virtualbox | install repository (debian)
-  tags: virtualbox,repositories,virtualbox
-  apt_repository:
-    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.asc] https://download.virtualbox.org/virtualbox/debian jammy contrib
-    state: present
-    filename: virtualbox
-  register: virtualbox_repo_debian
-
-- name: software | virtualbox | install package
-  tags: virtualbox
-  package:
-    name: virtualbox-6.1
-  when: virtualbox_repo_debian is changed
