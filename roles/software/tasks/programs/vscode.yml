@@ -15,3 +15,6 @@
           - rust-lang.rust-analyzer
           - platformio.platformio-ide
           - geequlim.godot-tools
+        visual_code_settings: {
+          "terminal.integrated.fontFamily": "mesloLGS NF"
+        }

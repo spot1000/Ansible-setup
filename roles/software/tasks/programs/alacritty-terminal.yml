@@ -11,3 +11,19 @@
   ansible.builtin.apt:
     name: alacritty
     state: latest
+
+- name: software | alacritty | update configs
+  become: true
+  file:
+    path: "~/.config/alacritty"
+    mode: '0755'
+    state: directory
+
+- name: System | oh-my-zsh | Copy powerlevel10k recommanded fonts
+  become: true
+  copy:
+    src: "configs/{{ item }}"
+    dest: "~/.config/alacritty/{{ item }}"
+    mode: '0644'
+  loop:
+    - alacritty.yml
