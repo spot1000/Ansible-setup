@@ -1,5 +1,5 @@
 - name: Software | Slack | install slack
-  tags: packages,slack,snap
+  tags: packages,slack,snap,notest
   community.general.snap:
     classic: true
     name: slack

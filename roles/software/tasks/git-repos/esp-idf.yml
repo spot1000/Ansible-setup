@@ -10,6 +10,8 @@
     dest: ~/esp/esp-idf
     recursive: true
     force: true
+  become: true
+  become_user: "{{ user_name }}"
 
 
 - name: Git repos | ESP-IDF | set up IDF tools
@@ -18,7 +20,6 @@
     ./install.sh all
   become: true
   become_user: "{{ user_name }}"
-  become_method: sudo
 
 # not sure if this one is needed
 - name: Git repos | ESP-IDF | set up env variables
