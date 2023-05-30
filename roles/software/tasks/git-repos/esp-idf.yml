@@ -23,4 +23,4 @@
 - name: Git repos | ESP-IDF | set up env variables
   ansible.builtin.shell:
     cmd: . ~/esp/esp-idf/export.sh
-  become: "{{ user_name }}"
+  become_user: "{{ user_name }}"
