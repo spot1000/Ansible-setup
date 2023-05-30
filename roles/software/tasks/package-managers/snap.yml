@@ -3,10 +3,11 @@
   ansible.builtin.package:
     name: snapd
     state: latest
+  become: true
   when: ansible_distribution != "Archlinux"
 
-# Ensure core snap is installed
-# - name: system setup | package managers | install/update core snap
+# # Ensure core snap is installed
+# - name: System setup | package managers | install/update core snap
 #   tags: packages,snap,todoist,workstation-packages
 #   snap:
 #     name:  core

@@ -3,4 +3,5 @@
   community.general.snap:
     name: slack
     state: present
+  become: true
   when: ansible_distribution != "Archlinux"

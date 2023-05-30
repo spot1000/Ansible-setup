@@ -1,4 +1,4 @@
-- name: system | oh-my-zsh | add oh-my-zsh
+- name: System | oh-my-zsh | add oh-my-zsh
   ansible.builtin.include_role:
     name: gantsign.oh-my-zsh
   vars:
@@ -12,13 +12,13 @@
             - aliases
           install: true
 
-- name: system | oh-my-zsh | clone powerlevel10k
+- name: System | oh-my-zsh | clone powerlevel10k
   git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     depth: 1
     dest: $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
-- name: system | oh-my-zsh | update zsh file
+- name: System | oh-my-zsh | update zsh file
   ansible.builtin.lineinfile:
     path: /home/{{ user_name }}/.zshrc
     regexp: '^ZSH_THEME='
@@ -27,18 +27,18 @@
     backup: yes
 
 # still need to download the font
-- name: Create fonts directory
+- name: System | oh-my-zsh | Create fonts directory
   become: true
   file:
-    path: "{{ fonts_path }}"
+    path: "/usr/share/fonts/TTF/"
     mode: '0755'
     state: directory
 
-- name: Copy powerlevel10k recommanded fonts
+- name: System | oh-my-zsh | Copy powerlevel10k recommanded fonts
   become: true
   copy:
     src: "fonts/{{ item }}"
-    dest: "/usr/share/fonts/{{ item }}"
+    dest: "/usr/share/fonts/TTF/{{ item }}"
     mode: '0644'
   loop:
     - MesloLGS NF Bold Italic.ttf

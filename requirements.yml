@@ -6,3 +6,6 @@
 
 #install oh-my-zsh
 - src: gantsign.oh-my-zsh
+
+# community.general
+- src: community.general

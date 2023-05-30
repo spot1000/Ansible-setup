@@ -5,6 +5,20 @@
   hosts: localhost
   connection: local
   become: true
+
+  vars_prompt:
+    - name: git_name
+      prompt: Git Name
+      private: false
+
+    - name: git_email
+      prompt: Git Email
+      private: false
+
+    - name: ssh_key_location
+      prompt: ssh key location
+      private: false
+
   pre_tasks:
     - name: Get user name
       become: false
@@ -19,7 +33,7 @@
     - name: Show distro versions
       ansible.builtin.debug:
         msg: "{{ item }}"
-      with_items:
+      loop:
         - "{{ ansible_distribution }}"
         - "{{ ansible_distribution_version }}"
         - "{{ ansible_facts['os_family'] }}"
@@ -27,11 +41,9 @@
     - name: Show propmt info
       ansible.builtin.debug:
         msg: "{{ item }}"
-      with_items:
+      loop:
         - "{{ git_name }}"
         - "{{ git_email }}"
-        - "{{ github_access_name }}"
-        - "{{ github_access_token }}"
 
     - name: Set git user name
       community.general.git_config:
@@ -45,71 +57,12 @@
         name: user.email
         value: "{{ git_email }}"
 
-
-  vars:
-    - test_repo: 'git@github.com:spot1000/diceroller.git'
-
-
-  vars_prompt:
-    - name: git_name
-      prompt: Git Name
-      private: false
-
-    - name: git_email
-      prompt: Git Email
-      private: false
-
-    - name: github_access_name
-      prompt: Github Access Name
-      private: false
-
-    - name: github_access_token
-      prompt: Github Access Token
-      private: true
-
-    - name: dev_type
-      prompt: Developer type (app, backend, firmware)
-      private: false
-
   tasks:
     - name: Set facts
       ansible.builtin.set_fact:
-        dev_type: "{{ dev_type }}"
-        github_access_name: "{{ github_access_name }}"
-        github_access_token: "{{ github_access_token }}"
+        ssh_key_location: "{{ ssh_key_location }}"
         git_name: "{{ git_name }}"
         git_email: "{{ git_email }}"
 
-
   roles:
     - role: software
-
-  # tasks:
-
-    # - name: install packages
-    #   apt: name={{ item }} state=latest
-    #   with_items:
-    #   - git
-    #   - vim
-    #   - curl
-    #   - wget
-    #   - python-pip
-    #   - python-dev
-    #   - build-essential
-    #   - libssl-dev
-    #   - libffi-dev
-    #   - libxml2-dev
-    #   - libxslt1-dev
-
-    # - name: check out git repo
-    #   git: 
-    #     repo: {{ test_repo }} 
-    #     dest: ~/projects/diceroller
-    #     accept_hostkey: yes
-    #     key_file: ~/.ssh/id_rsa
-    #     force: yes
-    #   delegate_to: localhost
-    #   run_once: yes
-    #   become: no
-
-
