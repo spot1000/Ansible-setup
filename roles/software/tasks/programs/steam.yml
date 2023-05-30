@@ -1,5 +1,5 @@
 # not working yet
-- name: software | steam | accept license
+- name: Software | steam | accept license
   tags: gaming,steam
   debconf:
     name: "steam"
@@ -11,18 +11,18 @@
     - steam is defined
     - steam == true
 
-- name: software | steam | install package
+- name: Software | steam | install package
   tags: steam,steam
-  package:
+  ansible.builtin.package:
     state: latest
     name: "{{ steam_package }}"
   when:
     - steam is defined
     - steam == true
 
-- name: software | steam | install steam-devices package (debian, ubuntu, etc)
+- name: Software | steam | install steam-devices package (debian, ubuntu, etc)
   tags: steam,steam
-  package:
+  ansible.builtin.package:
     state: latest
     name: steam-devices
   when:
@@ -30,9 +30,9 @@
     - steam is defined
     - steam == true
 
-- name: install vulkan drivers (debian, ubuntu, etc)
+- name: Install vulkan drivers (debian, ubuntu, etc)
   tags: drivers,steam
-  package:
+  ansible.builtin.package:
     state: latest
     name: mesa-vulkan-drivers
   when:

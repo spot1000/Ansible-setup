@@ -1,11 +1,11 @@
 - name: Git repos | ESP-IDF | make esp directory
-  file:
+  ansible.builtin.file:
     path: ~/esp
     state: directory
     mode: '0755'
 
 - name: Git repos | ESP-IDF | clone esp-idf
-  git: 
+  ansible.builtin.git: 
     repo: https://github.com/espressif/esp-idf.git
     dest: ~/esp/esp-idf
     recursive: true
@@ -13,7 +13,7 @@
 
 
 - name: Git repos | ESP-IDF | set up IDF tools
-  shell: |
+  ansible.builtin.shell: |
     cd ~/esp/esp-idf
     ./install.sh all
   become: true
@@ -22,7 +22,7 @@
 
 # not sure if this one is needed
 - name: Git repos | ESP-IDF | set up env variables
-  shell: |
+  ansible.builtin.shell: |
     . $HOME/esp/esp-idf/export.sh
   become: true
   become_user: "{{ user_name }}"

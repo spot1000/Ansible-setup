@@ -1,18 +1,11 @@
 ---
 # tasks file for all programs and packages
 
-- name: show distro versions
-  debug: msg="{{ item }}"
-  with_items:
-  - "{{ ansible_user_id }}"
-  - "{{ ansible_distribution }}"
-  - "{{ ansible_distribution_version }}"
-  - "{{ ansible_facts['os_family'] }}"
-
-- name: update and upgrade apt packages
+- name: Update and upgrade apt packages
   ansible.builtin.apt:
     update_cache: true
     upgrade: true
+
 
 # install apt packages
 - import_tasks: programs/apt.yml
@@ -48,5 +41,3 @@
 # clone git repos
 - import_tasks: git-repos/esp-idf.yml
 - import_tasks: git-repos/git-repos.yml
-
-

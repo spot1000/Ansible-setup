@@ -1,5 +1,5 @@
 # install apt packages
-- name: install apt packages
+- name: Software | Programs | Apt packages
   ansible.builtin.apt:
     name: "{{ item }}"
     state: latest
@@ -30,17 +30,3 @@
     - libxml2-dev
     - libxslt1-dev
     - ssh-askpass
-
-# packages for esp-idf (arch linux)
-# - gcc 
-# - git 
-# - make 
-# - flex 
-# - bison 
-# - gperf 
-# - python 
-# - cmake 
-# - ninja 
-# - ccache 
-# - dfu-util 
-# - libusb 

@@ -1,4 +1,4 @@
-- name: Languages | rust | check if cargo is installed
+- name: Languages | Rust | check if cargo is installed
   ansible.builtin.shell: command -v cargo
   register: cargo_exists
   ignore_errors: true
@@ -13,9 +13,8 @@
   tags:
     - rust
 
-- name: languages | rust | install rust/cargo
-  
-  shell: /tmp/sh.rustup.rs -y
+- name: Languages | Rust | install rust/cargo
+  ansible.builtin.shell: /tmp/sh.rustup.rs -y
   tags:
     - rust
   when: cargo_exists is failed

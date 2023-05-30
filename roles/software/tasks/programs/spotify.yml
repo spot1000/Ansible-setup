@@ -1,4 +1,4 @@
-- name: software | spotify | add spotify key
+- name: Software | spotify | add spotify key
   ansible.builtin.get_url:
     url: https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg
     dest: /etc/apt/trusted.gpg.d/spotify.asc
@@ -6,17 +6,17 @@
     force: true
 
 
-- name: software | spotify | add spotify repo
+- name: Software | spotify | add spotify repo
   tags: spotify,software
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: deb http://repository.spotify.com stable non-free
     state: present
     filename: spotify
   register: spotify_repo
 
-- name: software | spotify | install package
+- name: Software | spotify | install package
   tags: spotify,software
-  apt:
+  ansible.builtin.apt:
     name: spotify-client
     state: latest
   when: spotify_repo is changed

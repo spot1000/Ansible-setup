@@ -1,19 +1,7 @@
-    - name: git | clones | make projects folder
-      file:
-        path: ~/projects
-        state: directory
-        mode: '0755'
-      become: yes
-      become_user: "{{ user_name }}"
-      become_method: sudo
-    
-    # - name: check out git repo
-    #   git: 
-    #     repo: {{ test_repo }} 
-    #     dest: ~/projects/diceroller
-    #     accept_hostkey: yes
-    #     key_file: ~/.ssh/id_rsa
-    #     force: yes
-    #   delegate_to: localhost
-    #   run_once: yes
-    #   become: no
+- name: Git | clones | make projects folder
+  ansible.builtin.file:
+    path: ~/projects
+    state: directory
+    mode: '0755'
+  become: true
+  become_user: "{{ user_name }}"
