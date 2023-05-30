@@ -1,6 +1,7 @@
 - name: Software | Slack | install slack
   tags: packages,slack,snap
   community.general.snap:
+    classic: true
     name: slack
     state: present
   become: true

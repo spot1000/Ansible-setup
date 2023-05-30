@@ -2,9 +2,22 @@
 - name: System setup | package managers | install snapd
   ansible.builtin.package:
     name: snapd
-    state: latest
-  become: true
+    state: present
+  # become: true
   when: ansible_distribution != "Archlinux"
+
+- name: System setup | package managers | Ensure snapd is enabled
+  ansible.builtin.systemd:
+    name: snapd.socket
+    enabled: true
+    state: started
+
+- name: System setup | package managers | update snapd
+  ansible.builtin.shell: snap install core; snap refresh core
+  changed_when: true
+  failed_when: false
+  when: ansible_distribution != "Archlinux"
+
 
 # # Ensure core snap is installed
 # - name: System setup | package managers | install/update core snap

@@ -1,11 +1,15 @@
-# install VScode
-- src: gantsign.visual-studio-code
+roles:
+# needed for VS code
+- name: gantsign.visual-studio-code
 
-# install VScode extentions
-- src: gantsign.visual-studio-code-extensions
+# needed for VS code extensions
+- name: gantsign.visual-studio-code-extensions
 
-#install oh-my-zsh
-- src: gantsign.oh-my-zsh
+# needed for oh-my-zsh
+- name: gantsign.oh-my-zsh
 
-# community.general
-- src: community.general
+
+collections:
+# needed for snapd
+  - name: community.general
+    source: https://galaxy.ansible.com

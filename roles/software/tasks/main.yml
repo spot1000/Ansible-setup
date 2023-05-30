@@ -8,36 +8,36 @@
 
 
 # install apt packages
-- import_tasks: programs/apt.yml
+# - import_tasks: programs/apt.yml
 
-# install system setup tasks
-- import_tasks: system-setup/zsh.yml 
+# # install system setup tasks
+# - import_tasks: system-setup/zsh.yml 
 
 # install flatpak and snap managers
 - import_tasks: package-managers/flatpack.yml
 - import_tasks: package-managers/snap.yml
 
 # install programs not available via package managers
-- import_tasks: programs/vscode.yml
-- import_tasks: programs/spotify.yml
-- import_tasks: programs/slack.yml
-- import_tasks: programs/alacritty-terminal.yml
-- import_tasks: programs/virtualbox.yml
-# - import_tasks: programs/zoom.yml
-# - import_tasks: programs/discord.yml
-# - import_tasks: programs/vagrant.yml
-# - import_tasks: programs/cura.yml
-# - import_tasks: programs/openaudible.yml
-# - import_tasks: programs/via.yml
-# - import_tasks: programs/steam.yml # not working properly for some reason
-# - import_tasks: programs/1pass.yml # not working properly for some reason
+# - import_tasks: programs/vscode.yml
+# - import_tasks: programs/spotify.yml
+# - import_tasks: programs/slack.yml
+# - import_tasks: programs/alacritty-terminal.yml
+# - import_tasks: programs/virtualbox.yml
+# # - import_tasks: programs/zoom.yml
+# # - import_tasks: programs/discord.yml
+# # - import_tasks: programs/vagrant.yml
+# # - import_tasks: programs/cura.yml
+# # - import_tasks: programs/openaudible.yml
+# # - import_tasks: programs/via.yml
+# # - import_tasks: programs/steam.yml # not working properly for some reason
+# # - import_tasks: programs/1pass.yml # not working properly for some reason
 
-# install languages and language managers
-- import_tasks: languages/rust.yml
-# - import_tasks: programs/nodejs.yml
-# - import_tasks: programs/pyenv.yml
-# - import_tasks: programs/nvm.yml
+# # install languages and language managers
+# - import_tasks: languages/rust.yml
+# # - import_tasks: programs/nodejs.yml
+# # - import_tasks: programs/pyenv.yml
+# # - import_tasks: programs/nvm.yml
 
-# clone git repos
-- import_tasks: git-repos/esp-idf.yml
-- import_tasks: git-repos/git-repos.yml
+# # clone git repos
+# - import_tasks: git-repos/esp-idf.yml
+# - import_tasks: git-repos/git-repos.yml
