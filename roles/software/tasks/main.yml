@@ -5,6 +5,7 @@
   ansible.builtin.apt:
     update_cache: true
     upgrade: true
+  become: true
 
 
 # install apt packages
@@ -36,7 +37,7 @@
 
 # install languages and language managers
 - import_tasks: languages/rust.yml
-# - import_tasks: programs/nodejs.yml
+- import_tasks: programs/nvm.yml
 # - import_tasks: programs/pyenv.yml
 # - import_tasks: programs/nvm.yml
 

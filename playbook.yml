@@ -4,7 +4,6 @@
 - name: "Bootstrap development environment"
   hosts: localhost
   connection: local
-  become: true
 
   vars_prompt:
     - name: git_name
@@ -37,6 +36,12 @@
         - "{{ ansible_distribution }}"
         - "{{ ansible_distribution_version }}"
         - "{{ ansible_facts['os_family'] }}"
+
+    - name: show facts
+      ansible.builtin.debug: 
+        msg: "{{ item }}"
+      loop:
+      - "{{ ansible_env.HOME }}"
 
     - name: Show propmt info
       ansible.builtin.debug:

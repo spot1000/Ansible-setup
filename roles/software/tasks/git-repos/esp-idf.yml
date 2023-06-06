@@ -10,19 +10,5 @@
     dest: ~/esp/esp-idf
     recursive: true
     force: true
-  become: true
   become_user: "{{ user_name }}"
 
-
-- name: Git repos | ESP-IDF | set up IDF tools
-  ansible.builtin.shell: |
-    cd ~/esp/esp-idf
-    ./install.sh all
-  become: true
-  become_user: "{{ user_name }}"
-
-# not sure if this one is needed
-- name: Git repos | ESP-IDF | set up env variables
-  ansible.builtin.shell:
-    cmd: . ~/esp/esp-idf/export.sh
-  become_user: "{{ user_name }}"

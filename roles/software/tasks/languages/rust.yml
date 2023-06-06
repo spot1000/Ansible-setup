@@ -14,7 +14,6 @@
     force: 'yes'
   tags:
     - rust
-  become: true
 
 - name: Languages | Rust | install rust/cargo
   ansible.builtin.shell: /tmp/sh.rustup.rs -y

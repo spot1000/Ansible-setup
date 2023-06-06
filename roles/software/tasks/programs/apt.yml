@@ -31,3 +31,4 @@
     - libxslt1-dev
     - ssh-askpass
     - gcc
+  become: true
