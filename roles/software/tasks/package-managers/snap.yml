@@ -3,7 +3,7 @@
   ansible.builtin.package:
     name: snapd
     state: present
-  # become: true
+  become: true
   when: ansible_distribution != "Archlinux"
 
 - name: System setup | package managers | Ensure snapd is enabled
@@ -17,12 +17,3 @@
   changed_when: true
   failed_when: false
   when: ansible_distribution != "Archlinux"
-
-
-# # Ensure core snap is installed
-# - name: System setup | package managers | install/update core snap
-#   tags: packages,snap,todoist,workstation-packages
-#   snap:
-#     name:  core
-#     state: present
-#   when: ansible_distribution != "Archlinux"
