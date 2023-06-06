@@ -13,6 +13,7 @@
     repo: deb http://repository.spotify.com stable non-free
     state: present
     filename: spotify
+  become: true
   register: spotify_repo
 
 - name: Software | spotify | install package
@@ -20,4 +21,5 @@
   ansible.builtin.apt:
     name: spotify-client
     state: latest
+  become: true
   when: spotify_repo is changed
