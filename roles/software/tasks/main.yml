@@ -37,7 +37,7 @@
 
 # install languages and language managers
 - import_tasks: languages/rust.yml
-- import_tasks: programs/nvm.yml
+- import_tasks: languages/nvm.yml
 # - import_tasks: programs/pyenv.yml
 # - import_tasks: programs/nvm.yml
 
