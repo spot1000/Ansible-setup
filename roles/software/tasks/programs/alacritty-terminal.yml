@@ -11,6 +11,7 @@
   ansible.builtin.apt:
     name: alacritty
     state: latest
+  become: true
 
 - name: software | alacritty | update configs
   become: true
