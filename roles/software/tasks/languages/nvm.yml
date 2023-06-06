@@ -2,7 +2,7 @@
   file:
     path: "{{ local_home  }}/.nvm"
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Software | nvm | clone nvm
   ansible.builtin.git:
@@ -20,14 +20,14 @@
 - name: Software | nvm | add nvm path
   ansible.builtin.lineinfile:
     path: "~/.zshrc"
-    insertafter: '{{ item.regexp }}'
-    line: '{{ item.line }}'
+    insertafter: "{{ item.regexp }}"
+    line: "{{ item.line }}"
     state: present
     backup: true
   loop:
-    - { regexp: '^export ZSH=', line: '# Path to nvm' }
-    - { regexp: '^# Path to nvm', line: 'export NVM_DIR="$HOME/.nvm"' }
-    - { regexp: '^export NVM_DIR', line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' }
+    - { regexp: "^export ZSH=", line: "# Path to nvm" }
+    - { regexp: "^# Path to nvm", line: 'export NVM_DIR="$HOME/.nvm"' }
+    - { regexp: "^export NVM_DIR", line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' }
   become_user: "{{ user_name }}"
 
 - name: Software | nvm | install latest Node
@@ -40,7 +40,7 @@
   loop:
     - node
   become_user: "{{ user_name }}"
-
+  
 # - name: Software | nvm | create ~/.npmrc
 #   ansible.builtin.file:
 #     path: "~/.npmrc"
