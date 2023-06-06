@@ -41,29 +41,29 @@
     - node
   become_user: "{{ user_name }}"
 
-- name: Software | nvm | create ~/.npmrc
-  ansible.builtin.file:
-    path: "~/.npmrc"
-    state: touch
-    mode: '0644'
-  become_user: "{{ user_name }}"
+# - name: Software | nvm | create ~/.npmrc
+#   ansible.builtin.file:
+#     path: "~/.npmrc"
+#     state: touch
+#     mode: '0644'
+#   become_user: "{{ user_name }}"
 
-- name: Software | nvm | add npm token
-  ansible.builtin.lineinfile:
-    path: "~/.npmrc"
-    insertafter: '{{ item.regexp }}'
-    line: '{{ item.line }}'
-    state: present
-    backup: true
-  loop:
-    - { regexp: '', line: '//registry.npmjs.org/:_authToken={{ npm_token }}' }
-    - { regexp: '', line: '@mysa:registry=https://registry.npmjs.org/' }
-  become_user: "{{ user_name }}"
+# - name: Software | nvm | add npm token
+#   ansible.builtin.lineinfile:
+#     path: "~/.npmrc"
+#     insertafter: '{{ item.regexp }}'
+#     line: '{{ item.line }}'
+#     state: present
+#     backup: true
+#   loop:
+#     - { regexp: '', line: '//registry.npmjs.org/:_authToken={{ npm_token }}' }
+#     - { regexp: '', line: '@mysa:registry=https://registry.npmjs.org/' }
+#   become_user: "{{ user_name }}"
 
-- name: Software | nvm | source /.zshrc"
-  ansible.builtin.shell:
-    cmd: source ~/.zshrc
-  args:
-    executable: /bin/zsh
-  become_user: "{{ user_name }}"
+# - name: Software | nvm | source /.zshrc"
+#   ansible.builtin.shell:
+#     cmd: source ~/.zshrc
+#   args:
+#     executable: /bin/zsh
+#   become_user: "{{ user_name }}"
 
