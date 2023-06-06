@@ -27,6 +27,7 @@
       tags: always
       ansible.builtin.apt:
         update_cache: true
+      become: true
       when: ansible_facts['os_family'] == 'Debian'
 
     - name: Show distro versions
@@ -37,11 +38,11 @@
         - "{{ ansible_distribution_version }}"
         - "{{ ansible_facts['os_family'] }}"
 
-    - name: show facts
-      ansible.builtin.debug: 
+    - name: Show facts
+      ansible.builtin.debug:
         msg: "{{ item }}"
       loop:
-      - "{{ ansible_env.HOME }}"
+        - "{{ ansible_env.HOME }}"
 
     - name: Show propmt info
       ansible.builtin.debug:

@@ -36,7 +36,7 @@
 # - import_tasks: programs/1pass.yml # not working properly for some reason
 
 # install languages and language managers
-- import_tasks: languages/rust.yml
+# - import_tasks: languages/rust.ymlS
 - import_tasks: languages/nvm.yml
 # - import_tasks: programs/pyenv.yml
 # - import_tasks: programs/nvm.yml
