@@ -4,6 +4,7 @@
     dest: /etc/apt/trusted.gpg.d/spotify.asc
     mode: 0644
     force: true
+  become: true
 
 
 - name: Software | spotify | add spotify repo
