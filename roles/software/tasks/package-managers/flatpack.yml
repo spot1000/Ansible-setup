@@ -4,7 +4,7 @@
     name: flatpak
     state: present
   become: true
-  become_user: "{{ user_name }}"
+  # become_user: "{{ user_name }}"
 
 - name: System setup | package managers | add flathub remote
   tags: packages,flatpak
