@@ -23,5 +23,5 @@
   ansible.builtin.apt:
     name: 1password
     state: latest
-    update_cache: yea
+    update_cache: true
   become: true
