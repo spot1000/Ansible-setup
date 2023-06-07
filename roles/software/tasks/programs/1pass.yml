@@ -6,6 +6,7 @@
     dest: /usr/share/keyrings/1password-archive-keyring.asc
     mode: 0644
     force: true
+  become: true
 
 
 - name: Software | 1pass | add 1pass repo
