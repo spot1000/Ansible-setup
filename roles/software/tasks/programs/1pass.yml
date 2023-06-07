@@ -15,6 +15,7 @@
     filename: 1password
     repo: 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.asc] https://downloads.1password.com/linux/debian/amd64 stable main'
     state: present
+  become: true
 
 
 - name: Software | 1pass | install package
@@ -22,4 +23,5 @@
   ansible.builtin.apt:
     name: 1password
     state: latest
-    update_cache: yes
+    update_cache: yea
+  become: true
