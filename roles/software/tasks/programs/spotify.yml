@@ -2,7 +2,7 @@
   ansible.builtin.get_url:
     url: https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg
     dest: /etc/apt/trusted.gpg.d/spotify.asc
-    mode: 0644
+    mode: 0755
     force: true
   become: true
 

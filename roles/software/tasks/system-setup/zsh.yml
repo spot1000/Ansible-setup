@@ -43,7 +43,7 @@
   copy:
     src: "fonts/{{ item }}"
     dest: "/usr/share/fonts/TTF/{{ item }}"
-    mode: '0644'
+    mode: '0755'
   loop:
     - MesloLGS NF Bold Italic.ttf
     - MesloLGS NF Bold.ttf

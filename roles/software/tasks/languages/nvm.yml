@@ -40,12 +40,12 @@
   loop:
     - node
   become_user: "{{ user_name }}"
-  
+
 # - name: Software | nvm | create ~/.npmrc
 #   ansible.builtin.file:
 #     path: "~/.npmrc"
 #     state: touch
-#     mode: '0644'
+#     mode: '0755'
 #   become_user: "{{ user_name }}"
 
 # - name: Software | nvm | add npm token

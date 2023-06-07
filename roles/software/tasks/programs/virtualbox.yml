@@ -2,7 +2,7 @@
   ansible.builtin.get_url:
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     dest: /usr/share/keyrings/oracle-virtualbox-2016.asc
-    mode: 0644
+    mode: 0755
   become: true
 
 

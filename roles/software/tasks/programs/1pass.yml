@@ -4,7 +4,7 @@
   ansible.builtin.get_url:
     url: https://downloads.1password.com/linux/keys/1password.asc
     dest: /usr/share/keyrings/1password-archive-keyring.asc
-    mode: 0644
+    mode: '0755'
     force: true
   become: true
 
@@ -17,6 +17,35 @@
     state: present
   become: true
 
+- name: Software | 1pass | makde debsig folder
+  ansible.builtin.file:
+    path: /etc/debsig/policies/AC2D62742012EA22/
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Software | 1pass | download debsig
+  ansible.builtin.get_url:
+    url: https://downloads.1password.com/linux/debian/debsig/1password.pol
+    dest: /etc/debsig/policies/AC2D62742012EA22/1password.pol
+    mode: "0755"
+    force: true
+  become: true
+
+- name: Software | 1pass | makde debsig keyrings folder
+  ansible.builtin.file:
+    path: /usr/share/debsig/keyrings/AC2D62742012EA22
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Software | 1pass | download debsig keyrings
+  ansible.builtin.get_url:
+    url: https://downloads.1password.com/linux/keys/1password.asc
+    dest: /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+    mode: "0755"
+    force: true
+  become: true
 
 - name: Software | 1pass | install package
   tags: 1password,software
