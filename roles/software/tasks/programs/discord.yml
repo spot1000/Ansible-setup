@@ -1,0 +1,8 @@
+- name: Software | Discord | install discord
+  tags: packages,discord,snap,notest
+  community.general.snap:
+    classic: true
+    name: discord
+    state: present
+  become: true
+  when: ansible_distribution != "Archlinux"

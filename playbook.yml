@@ -1,6 +1,5 @@
 # Ansible playground Script
 
-
 - name: "Bootstrap development environment"
   hosts: localhost
   connection: local
