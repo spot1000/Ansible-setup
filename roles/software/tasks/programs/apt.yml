@@ -31,4 +31,6 @@
     - libxslt1-dev
     - ssh-askpass
     - gcc
+    - flameshot
+    - neofetch
   become: true
