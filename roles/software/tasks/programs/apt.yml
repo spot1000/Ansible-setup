@@ -22,6 +22,10 @@
     - dfu-util
     - libusb-1.0-0
 
+    # packages for c/c++ development
+    - clang
+    - clang-format
+
     # other packages
     - acl
     - build-essential
