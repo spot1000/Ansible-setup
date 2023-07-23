@@ -22,8 +22,8 @@
 # install programs not available via package managers
 - import_tasks: programs/vscode.yml
 - import_tasks: programs/spotify.yml
-- import_tasks: programs/slack.yml
-  tags: notest
+# - import_tasks: programs/slack.yml
+  # tags: notest
 - import_tasks: programs/alacritty-terminal.yml
 - import_tasks: programs/virtualbox.yml
 # - import_tasks: programs/zoom.yml

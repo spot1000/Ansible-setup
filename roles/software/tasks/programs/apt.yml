@@ -37,4 +37,5 @@
     - gcc
     - flameshot
     - neofetch
+    - rpi-imager
   become: true
